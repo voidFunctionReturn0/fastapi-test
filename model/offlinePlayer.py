@@ -1,10 +1,12 @@
+from res.modules import makeSession
+from datetime import date, datetime
 import sys
 [sys.path.append(i) for i in ['.', '..']]
-from datetime import date, datetime
+
 
 class OfflinePlayer:
-    def __init__(self, session: str, deviceId: str | None):
-        self.session: str = session # id 역할, 이론상 중복 가능
+    def __init__(self, deviceId: str):
+        self.session: str = makeSession(deviceId) # id 역할, 이론상 중복 가능
         self.name: str = "익명의 플레이어"
         self.deviceId: str | None = deviceId
         self.createdAt: date = datetime.now()
