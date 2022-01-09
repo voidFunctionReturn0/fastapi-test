@@ -1,46 +1,17 @@
 import sys
 [sys.path.append(i) for i in ['.', '..']]
-from datetime import date
-from pydantic.main import BaseModel
+from datetime import date, datetime
 
-class OfflinePlayer(BaseModel):
-    id: int
-    name: str
-    deviceId: str
-    """createdAt: date
-    updatedAt: date
-    winAsCitizen: int
-    defeatAsCitizen: int
-    winAsMafia: int
-    defeatAsMafia: int
-    totalNumOfGame: int
-    heart: int"""
-
-"""
-class Player():
-    def __init__(
-        self,
-        id: int,
-        name: str,
-        deviceId: str,
-        createdAt: date,
-        updatedAt: date,
-        winAsCitizen: int,
-        defeatAsCitizen: int,
-        winAsMafia: int,
-        defeatAsMafia: int,
-        totalNumOfGame: int,
-        heart: int
-        ):
-        self.id = id
-        self.name = name
-        self.deviceId = deviceId
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
-        self.winAsCitizen = winAsCitizen
-        self.defeatAsCitizen = defeatAsCitizen
-        self.winAsMafia = winAsMafia
-        self.defeatAsMafia = defeatAsMafia
-        self.totalNumOfGame = totalNumOfGame
-        self.heart = heart
-"""
+class OfflinePlayer:
+    def __init__(self, session: str, deviceId: str | None):
+        self.session: str = session # id 역할, 이론상 중복 가능
+        self.name: str = "익명의 플레이어"
+        self.deviceId: str | None = deviceId
+        self.createdAt: date = datetime.now()
+        self.updatedAt: date = datetime.now()
+        self.winAsCitizen: int = 0
+        self.defeatAsCitizen: int = 0
+        self.winAsMafia: int = 0
+        self.defeatAsMafia: int = 0
+        self.totalNumOfGame: int = 0
+        self.heart: int = 0

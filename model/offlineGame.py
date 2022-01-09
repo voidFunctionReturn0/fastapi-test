@@ -8,7 +8,7 @@ class OfflineGame:
     cntId = 0
 
     def makeId(self):
-        # 락 필요(스레드 안전)
+        # 락 필요(스레드 안전하게)
         currentId = OfflineGame.cntId
         OfflineGame.cntId += 1
         return currentId
@@ -20,5 +20,5 @@ class OfflineGame:
         self.maxNumOfPlayers = constants.MAX_NUM_OF_PALYERS
         self.createdAt = datetime.now()
         self.lastPlayOn: date | None = None
-        self.leader = 0 # players의 인덱스
+        self.host = 0 # players의 인덱스
         self.players = [gameMakerId]
